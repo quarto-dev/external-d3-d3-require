@@ -99,7 +99,7 @@ export function requireFrom(resolver) {
       if (requestsInFlight === 0) {
         prevDefine = window.define;
         window.define = define;
-      };
+      }
       requestsInFlight++;
       document.head.appendChild(script);
     }));
