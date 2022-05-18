@@ -64,12 +64,12 @@ async function resolve(name, base) {
 }
 
 export var require = requireFrom(resolve);
+let requestsInFlight = 0;
+let prevDefine = undefined;
 
 export function requireFrom(resolver) {
   const cache = new Map;
   const requireBase = requireRelative(null);
-  let requestsInFlight = 0;
-  let prevDefine = undefined;
     
   function requireAbsolute(url) {
     if (typeof url !== "string") return url;
